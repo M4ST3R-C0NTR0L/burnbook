@@ -1,0 +1,47 @@
+# Build artifacts
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Tests
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Version control
+.git/
+.gitignore
+
+# Documentation
+docs/_build/
+*.md
+gitHub/
+
+# CI/CD configs
+.github/
+.travis.yml
+.gitlab-ci.yml
+azure-pipelines.yml
