@@ -1,5 +1,5 @@
 """
-Tests for the BurnBook CLI.
+Tests for the CybrLint CLI.
 """
 
 import json
@@ -7,7 +7,7 @@ import pytest
 from pathlib import Path
 from click.testing import CliRunner
 
-from burnbook.cli import cli
+from cybrlint.cli import cli
 
 
 @pytest.fixture
@@ -174,7 +174,7 @@ class TestReportCommand:
                 "--offline"
             ])
             assert result.exit_code == 0
-            assert Path("burnbook-report.html").exists()
+            assert Path("cybrlint-report.html").exists()
 
 
 class TestVersionFlag:

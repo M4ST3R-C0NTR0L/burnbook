@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 from typing import List, Optional
 
-from burnbook.rules import BaseRule, Issue
+from cybrlint.rules import BaseRule, Issue
 
 
 class PythonComplexityRule(BaseRule):

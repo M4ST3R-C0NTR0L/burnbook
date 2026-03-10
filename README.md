@@ -172,9 +172,9 @@ export OPENAI_API_KEY="your_key_here"
 ### Custom Model (optional)
 
 ```bash
-export BURNBOOK_MODEL="openai/gpt-4o"  # OpenRouter format
+export CYBRLINT_MODEL="openai/gpt-4o"  # OpenRouter format
 # or
-export BURNBOOK_MODEL="gpt-4o"          # OpenAI format
+export CYBRLINT_MODEL="gpt-4o"          # OpenAI format
 ```
 
 ### Without AI

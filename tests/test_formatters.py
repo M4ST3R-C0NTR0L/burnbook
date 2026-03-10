@@ -1,10 +1,10 @@
 """
-Tests for BurnBook formatters.
+Tests for CybrLint formatters.
 """
 import json
 import pytest
 
-from burnbook.formatters import (
+from cybrlint.formatters import (
     JSONFormatter,
     HTMLFormatter,
     get_score_badge,
@@ -133,7 +133,7 @@ class TestJSONFormatter:
     def test_contains_metadata(self):
         output = self.formatter.render(SAMPLE_RESULTS)
         data = json.loads(output)
-        assert "burnbook_version" in data
+        assert "cybrlint_version" in data
         assert "generated_at" in data
         assert data["language"] == "python"
 

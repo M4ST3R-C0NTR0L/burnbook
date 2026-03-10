@@ -1,6 +1,6 @@
 """
 An example of well-written Python code that should score well.
-This demonstrates what BurnBook considers "good" code.
+This demonstrates what CybrLint considers "good" code.
 """
 
 from typing import Optional, List

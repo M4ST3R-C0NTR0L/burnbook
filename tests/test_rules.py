@@ -5,7 +5,7 @@ Tests for individual rules.
 import pytest
 from pathlib import Path
 
-from burnbook.rules.python_rules import (
+from cybrlint.rules.python_rules import (
     PythonComplexityRule,
     PythonBareExceptRule,
     PythonMutableDefaultArgRule,
@@ -14,7 +14,7 @@ from burnbook.rules.python_rules import (
     PythonSyntaxErrorRule,
     PythonNoDocstringRule,
 )
-from burnbook.rules.common_rules import (
+from cybrlint.rules.common_rules import (
     HardcodedCredentialRule,
     TodoFixmeRule,
     LongLineRule,
@@ -22,14 +22,14 @@ from burnbook.rules.common_rules import (
     LargeFileSizeRule,
     MixedIndentationRule,
 )
-from burnbook.rules.javascript_rules import (
+from cybrlint.rules.javascript_rules import (
     JSVarDeclarationRule,
     JSEvalUsageRule,
     JSEqualityRule,
     JSAnyTypeRule,
 )
-from burnbook.rules.go_rules import GoErrorIgnoreRule, GoPanicUsageRule
-from burnbook.rules.rust_rules import RustUnwrapChainRule, RustUnsafeBlockRule
+from cybrlint.rules.go_rules import GoErrorIgnoreRule, GoPanicUsageRule
+from cybrlint.rules.rust_rules import RustUnwrapChainRule, RustUnsafeBlockRule
 
 
 FAKE_PATH = Path("/fake/file.py")
@@ -362,7 +362,7 @@ class TestRustUnsafe:
 
 class TestScoring:
     def test_score_within_range(self):
-        from burnbook.analyzer import Analyzer
+        from cybrlint.analyzer import Analyzer
         import tempfile
         from pathlib import Path
 
@@ -374,7 +374,7 @@ class TestScoring:
             assert 0 <= results["score"] <= 100
 
     def test_score_decreases_with_issues(self):
-        from burnbook.analyzer import Analyzer
+        from cybrlint.analyzer import Analyzer
         import tempfile
 
         with tempfile.TemporaryDirectory() as tmpdir:

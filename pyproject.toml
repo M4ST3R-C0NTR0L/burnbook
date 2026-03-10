@@ -3,13 +3,13 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "burnbook"
+name = "CybrLint"
 version = "1.0.0"
-description = "The code quality roaster that tells it like it is. Your code's honest friend (that no one asked for)."
+description = "🔥 The code quality roaster that tells it like it is. Your code's honest friend (that no one asked for)."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [
-  { name = "BurnBook Contributors" }
+  { name = "Cybrflux" }
 ]
 keywords = ["code", "quality", "linter", "roast", "cli", "analysis", "funny"]
 classifiers = [
@@ -40,15 +40,15 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/burnbook/burnbook"
-Repository = "https://github.com/burnbook/burnbook"
-"Bug Tracker" = "https://github.com/burnbook/burnbook/issues"
+Homepage = "https://github.com/M4ST3R-C0NTR0L/CybrLint"
+Repository = "https://github.com/M4ST3R-C0NTR0L/CybrLint"
+"Bug Tracker" = "https://github.com/M4ST3R-C0NTR0L/CybrLint/issues"
 
 [project.scripts]
-burnbook = "burnbook.cli:main"
+CybrLint = "cybrlint.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["burnbook*"]
+include = ["cybrlint*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

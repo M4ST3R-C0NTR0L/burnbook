@@ -1,5 +1,5 @@
 """
-BurnBook Rules Engine - The judges' panel.
+CybrLint Rules Engine - The judges' panel.
 Each rule is a specific code quality check.
 """
 
@@ -47,28 +47,28 @@ class BaseRule:
 
 def get_rules_for_language(language: Optional[str]) -> List[BaseRule]:
     """Return the appropriate rule set for a language."""
-    from burnbook.rules import common_rules
+    from cybrlint.rules import common_rules
 
     rules: List[BaseRule] = list(common_rules.RULES)
 
     if language == "python":
-        from burnbook.rules import python_rules
+        from cybrlint.rules import python_rules
         rules.extend(python_rules.RULES)
     elif language in ("javascript", "typescript"):
-        from burnbook.rules import javascript_rules
+        from cybrlint.rules import javascript_rules
         rules.extend(javascript_rules.RULES)
     elif language == "go":
-        from burnbook.rules import go_rules
+        from cybrlint.rules import go_rules
         rules.extend(go_rules.RULES)
     elif language == "rust":
-        from burnbook.rules import rust_rules
+        from cybrlint.rules import rust_rules
         rules.extend(rust_rules.RULES)
     elif language == "java":
-        from burnbook.rules import java_rules
+        from cybrlint.rules import java_rules
         rules.extend(java_rules.RULES)
     else:
         # Unknown language: try all language rules
-        from burnbook.rules import python_rules, javascript_rules, go_rules, rust_rules, java_rules
+        from cybrlint.rules import python_rules, javascript_rules, go_rules, rust_rules, java_rules
         rules.extend(python_rules.RULES)
         rules.extend(javascript_rules.RULES)
         rules.extend(go_rules.RULES)

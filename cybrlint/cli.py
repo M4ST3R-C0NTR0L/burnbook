@@ -1,5 +1,5 @@
 """
-BurnBook CLI - Entry point for the code quality roaster.
+CybrLint CLI - Entry point for the code quality roaster.
 """
 
 import sys
@@ -8,10 +8,10 @@ import click
 from pathlib import Path
 from typing import Optional
 
-from burnbook import __version__
-from burnbook.analyzer import Analyzer
-from burnbook.roaster import Roaster
-from burnbook.formatters import (
+from cybrlint import __version__
+from cybrlint.analyzer import Analyzer
+from cybrlint.roaster import Roaster
+from cybrlint.formatters import (
     ConsoleFormatter,
     JSONFormatter,
     HTMLFormatter,
@@ -21,12 +21,12 @@ from burnbook.formatters import (
 
 
 BANNER = r"""
- ____                   ____              _    
-|  _ \                 |  _ \            | |   
-| |_) |_   _ _ __ _ __ | |_) | ___   ___ | | __
-|  _ <| | | | '__| '_ \|  _ < / _ \ / _ \| |/ /
-| |_) | |_| | |  | | | | |_) | (_) | (_) |   < 
-|____/ \__,_|_|  |_| |_|____/ \___/ \___/|_|\_\
+  ____      _                  _       _   _
+ / ___|   _| |__  _ __ ___    | |     |_| | |
+| |  | | | | '_ \| '__/ _ \   | |      _  | |
+| |__| |_| | |_) | | |  __/   | |___  | | | |
+ \____\__, |_.__/|_|  \___|   |_____| |_| |_|
+      |___/
 
   Your code's honest friend. (That no one asked for.)
   v{version}
@@ -38,9 +38,9 @@ def print_banner():
 
 
 @click.group()
-@click.version_option(__version__, prog_name="burnbook")
+@click.version_option(__version__, prog_name="CybrLint")
 def cli():
-    """BurnBook — The code quality roaster that tells it like it is.\n
+    """CybrLint — The code quality roaster that tells it like it is.\n
     Your code will never feel safe again. 🔥
     """
     pass
@@ -89,11 +89,11 @@ def roast(
 
     \b
     Examples:
-      burnbook roast .
-      burnbook roast ./src/app.py --severity nuclear
-      burnbook roast . --lang python --format json
-      burnbook roast . --ci --ci-threshold 70
-      burnbook roast . --offline
+      cybrlint roast .
+      cybrlint roast ./src/app.py --severity nuclear
+      cybrlint roast . --lang python --format json
+      cybrlint roast . --ci --ci-threshold 70
+      cybrlint roast . --offline
     """
     if not no_banner and output_format == "console":
         print_banner()
@@ -155,7 +155,7 @@ def roast(
     elif output_format == "html":
         formatter = HTMLFormatter(severity=severity)
         content = formatter.render(results)
-        out_path = output or "burnbook-report.html"
+        out_path = output or "cybrlint-report.html"
         Path(out_path).write_text(content)
         if output_format != "json":
             click.echo(f"📄 HTML report saved to {out_path}")
@@ -178,7 +178,7 @@ def roast(
 
 @cli.command()
 @click.argument("target", default=".", type=click.Path(exists=True))
-@click.option("--output", "-o", default="burnbook-report.html", type=click.Path(),
+@click.option("--output", "-o", default="cybrlint-report.html", type=click.Path(),
               help="Output HTML file path")
 @click.option("--lang", "-l", default=None,
               type=click.Choice(["python", "javascript", "typescript", "go", "rust", "java", "auto"]),
@@ -192,8 +192,8 @@ def report(target: str, output: str, lang: Optional[str], offline: bool, severit
     """Generate a beautiful HTML roast report.\n
     \b
     Examples:
-      burnbook report .
-      burnbook report ./src --output my-report.html
+      cybrlint report .
+      cybrlint report ./src --output my-report.html
     """
     print_banner()
     target_path = Path(target).resolve()
@@ -224,8 +224,8 @@ def report(target: str, output: str, lang: Optional[str], offline: bool, severit
 
 @cli.command()
 def install_hook():
-    """Install BurnBook as a pre-commit git hook.\n
-    Runs burnbook roast on staged files before each commit.
+    """Install CybrLint as a pre-commit git hook.\n
+    Runs cybrlint roast on staged files before each commit.
     """
     hook_path = Path(".git/hooks/pre-commit")
 
@@ -234,19 +234,19 @@ def install_hook():
         sys.exit(1)
 
     hook_content = """#!/bin/sh
-# BurnBook pre-commit hook
-echo "🔥 BurnBook is judging your code..."
-burnbook roast . --ci --ci-threshold 50 --no-banner --format console
+# CybrLint pre-commit hook
+echo "🔥 CybrLint is judging your code..."
+cybrlint roast . --ci --ci-threshold 50 --no-banner --format console
 if [ $? -ne 0 ]; then
-    echo "❌ BurnBook says: Fix your code before committing, coward."
+    echo "❌ CybrLint says: Fix your code before committing, coward."
     exit 1
 fi
-echo "✅ BurnBook approves. Barely."
+echo "✅ CybrLint approves. Barely."
 """
     hook_path.write_text(hook_content)
     hook_path.chmod(0o755)
     click.echo(click.style("✅ Pre-commit hook installed!", fg="green"))
-    click.echo("   BurnBook will now judge your code before every commit.")
+    click.echo("   CybrLint will now judge your code before every commit.")
     click.echo(click.style("   You've been warned. 🔥", fg="red"))
 
 

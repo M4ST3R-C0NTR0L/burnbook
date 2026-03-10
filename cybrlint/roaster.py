@@ -1,5 +1,5 @@
 """
-BurnBook Roaster - The AI-powered savage.
+CybrLint Roaster - The AI-powered savage.
 Turns dry analysis into devastating commentary.
 """
 
@@ -21,7 +21,7 @@ SEVERITY_PROMPTS = {
     ),
 }
 
-SYSTEM_PROMPT = """You are BurnBook, the world's most savage code reviewer. 
+SYSTEM_PROMPT = """You are CybrLint, the world's most savage code reviewer. 
 You analyze code quality results and deliver brutal but educational roasts.
 You're like a comedy roast, but for code. Every joke should land AND teach something.
 You reference coding disasters (like the Mars Orbiter bug, the Therac-25, etc.), 
@@ -45,7 +45,7 @@ class Roaster:
         self.api_key = api_key
         self.severity = severity
         self.model = model or os.environ.get(
-            "BURNBOOK_MODEL", "openai/gpt-4o-mini"
+            "CYBRLINT_MODEL", "openai/gpt-4o-mini"
         )
         # Detect if using OpenRouter vs OpenAI directly
         self.base_url = (
@@ -169,8 +169,8 @@ Respond with JSON in this exact format:
         }
 
         if self.base_url.startswith("https://openrouter.ai"):
-            headers["HTTP-Referer"] = "https://github.com/burnbook/burnbook"
-            headers["X-Title"] = "BurnBook Code Roaster"
+            headers["HTTP-Referer"] = "https://github.com/cybrlint/cybrlint"
+            headers["X-Title"] = "CybrLint Code Roaster"
 
         payload = {
             "model": self.model,
@@ -243,7 +243,7 @@ Respond with JSON in this exact format:
         else:
             return (
                 "Alright, I'll admit it — this is genuinely solid code. "
-                "You've made BurnBook almost feel bad. Almost. "
+                "You've made CybrLint almost feel bad. Almost. "
                 "Don't let it go to your head."
             )
 

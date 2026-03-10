@@ -1,5 +1,5 @@
 """
-An intentionally terrible Python file for testing BurnBook.
+An intentionally terrible Python file for testing CybrLint.
 This code is designed to trigger as many rules as possible.
 """
 

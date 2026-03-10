@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import List
 
-from burnbook.rules import BaseRule, Issue
+from cybrlint.rules import BaseRule, Issue
 
 
 class JavaGodClassRule(BaseRule):

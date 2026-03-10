@@ -1,5 +1,5 @@
 """
-BurnBook Analyzer - The crime scene investigator.
+CybrLint Analyzer - The crime scene investigator.
 Collects evidence of code atrocities.
 """
 
@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Optional, Callable, List, Dict, Any
 import fnmatch
 
-from burnbook.rules import get_rules_for_language, detect_language
+from cybrlint.rules import get_rules_for_language, detect_language
 
 
 # File extensions by language

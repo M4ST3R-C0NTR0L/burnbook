@@ -1,1 +1,1 @@
-# BurnBook test suite
+# CybrLint test suite

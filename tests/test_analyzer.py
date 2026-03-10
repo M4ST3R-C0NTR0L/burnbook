@@ -1,5 +1,5 @@
 """
-Tests for the BurnBook analyzer.
+Tests for the CybrLint analyzer.
 """
 
 import pytest
@@ -7,7 +7,7 @@ from pathlib import Path
 import tempfile
 import os
 
-from burnbook.analyzer import Analyzer
+from cybrlint.analyzer import Analyzer
 
 
 @pytest.fixture
