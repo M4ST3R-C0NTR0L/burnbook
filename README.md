@@ -1,4 +1,4 @@
-# 🔥 BurnBook
+# 🔥 CybrLint
 
 > **The code quality roaster that tells it like it is.**
 >
@@ -9,13 +9,13 @@
 [![PyPI](https://img.shields.io/badge/pypi-coming_soon-orange.svg)](https://pypi.org)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](tests/)
 
-![BurnBook Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3J6Y3B5eHh4a3R0b3J4eW5qZ3N0eXJ1Z2h0d3J5Z3J5d3J5Z3J5d3J5Z3J5d3J5Z3J5/giphy.gif)
+![CybrLint Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3J6Y3B5eHh4a3R0b3J4eW5qZ3N0eXJ1Z2h0d3J5Z3J5d3J5Z3J5d3J5Z3J5d3J5Z3J5/giphy.gif)
 
-## What is BurnBook?
+## What is CybrLint?
 
-**BurnBook** is a CLI tool that analyzes your codebase and delivers **brutal, hilarious, but educational** roast commentary about your code quality. Think of it as a linter, but with a personality disorder and a sick sense of humor.
+**CybrLint** is a CLI tool that analyzes your codebase and delivers **brutal, hilarious, but educational** roast commentary about your code quality. Think of it as a linter, but with a personality disorder and a sick sense of humor.
 
-### Why BurnBook?
+### Why CybrLint?
 
 - 😤 Most linters are boring and get ignored
 - 😂 Comedy makes people actually read the output
@@ -37,11 +37,11 @@
 
 ```bash
 # From PyPI (coming soon)
-pip install burnbook
+pip install CybrLint
 
 # From source
-git clone https://github.com/burnbook/burnbook.git
-cd burnbook
+git clone https://github.com/CybrLint/CybrLint.git
+cd CybrLint
 pip install -e .
 ```
 
@@ -49,30 +49,30 @@ pip install -e .
 
 ```bash
 # Roast your current directory
-burnbook roast .
+CybrLint roast .
 
 # Roast a specific file
-burnbook roast ./src/app.py
+CybrLint roast ./src/app.py
 
 # Roast with nuclear severity
-burnbook roast . --severity nuclear
+CybrLint roast . --severity nuclear
 
 # Generate an HTML report
-burnbook report . --output report.html
+CybrLint report . --output report.html
 
 # CI mode (fails if score < 60)
-burnbook roast . --ci
+CybrLint roast . --ci
 
 # Offline mode (no AI roasting)
-burnbook roast . --offline
+CybrLint roast . --offline
 ```
 
 ## CLI Reference
 
-### `burnbook roast`
+### `CybrLint roast`
 
 ```
-Usage: burnbook roast [OPTIONS] TARGET
+Usage: CybrLint roast [OPTIONS] TARGET
 
 Arguments:
   TARGET  Path to file or directory to analyze (default: current directory)
@@ -92,15 +92,15 @@ Options:
   --help                  Show this message and exit
 ```
 
-### `burnbook report`
+### `CybrLint report`
 
 ```
-Usage: burnbook report [OPTIONS] TARGET
+Usage: CybrLint report [OPTIONS] TARGET
 
 Generates a beautiful HTML report with charts and AI commentary.
 
 Options:
-  -o, --output PATH    Output HTML file path  [default: burnbook-report.html]
+  -o, --output PATH    Output HTML file path  [default: CybrLint-report.html]
   -l, --lang LANG      Language to analyze
   --offline            Offline mode: skip AI roasting
   -s, --severity LEVEL Roast severity level  [default: brutal]
@@ -112,7 +112,7 @@ Options:
 ### The Nuclear Option
 
 ```bash
-$ burnbook roast . --severity nuclear
+$ CybrLint roast . --severity nuclear
 
 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
@@ -131,17 +131,17 @@ lifestyle choice.
 ### JSON Output for CI/CD
 
 ```bash
-$ burnbook roast . --format json | jq '.score'
+$ CybrLint roast . --format json | jq '.score'
 23
 
-$ burnbook roast . --ci --ci-threshold 70
+$ CybrLint roast . --ci --ci-threshold 70
 💥 CI FAILED: Score 23 < threshold 70
 ```
 
 ### HTML Report
 
 ```bash
-$ burnbook report . --output roast.html
+$ CybrLint report . --output roast.html
 📊 HTML report saved to: roast.html
 
 # Open in browser
@@ -157,7 +157,7 @@ The HTML report includes:
 
 ## AI Roasting
 
-BurnBook supports AI-powered roasting via OpenRouter or OpenAI.
+CybrLint supports AI-powered roasting via OpenRouter or OpenAI.
 
 ### Setup
 
@@ -179,10 +179,10 @@ export BURNBOOK_MODEL="gpt-4o"          # OpenAI format
 
 ### Without AI
 
-BurnBook works completely offline! It just won't have the AI commentary. Static roasts are still savage.
+CybrLint works completely offline! It just won't have the AI commentary. Static roasts are still savage.
 
 ```bash
-burnbook roast . --offline
+CybrLint roast . --offline
 ```
 
 ## Pre-commit Hook
@@ -191,13 +191,13 @@ Automatically roast your code before every commit:
 
 ```bash
 # Install the hook
-burnbook install-hook
+CybrLint install-hook
 
 # Or manually add to .git/hooks/pre-commit:
 cat > .git/hooks/pre-commit << 'EOF'
 #!/bin/sh
-echo "🔥 BurnBook is judging your code..."
-burnbook roast . --ci --ci-threshold 50 --no-banner
+echo "🔥 CybrLint is judging your code..."
+CybrLint roast . --ci --ci-threshold 50 --no-banner
 EOF
 chmod +x .git/hooks/pre-commit
 ```
@@ -205,7 +205,7 @@ chmod +x .git/hooks/pre-commit
 ## GitHub Actions Integration
 
 ```yaml
-name: BurnBook
+name: CybrLint
 
 on: [push, pull_request]
 
@@ -217,8 +217,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - run: pip install burnbook
-      - run: burnbook roast . --ci --ci-threshold 60
+      - run: pip install CybrLint
+      - run: CybrLint roast . --ci --ci-threshold 60
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 ```
@@ -234,7 +234,7 @@ jobs:
 | Rust | `.rs` | ✅ Full |
 | Java | `.java` | ✅ Full |
 
-## What BurnBook Checks
+## What CybrLint Checks
 
 ### Complexity
 - Cyclomatic complexity
@@ -289,8 +289,8 @@ jobs:
 ## Project Structure
 
 ```
-burnbook/
-├── burnbook/
+CybrLint/
+├── CybrLint/
 │   ├── __init__.py
 │   ├── cli.py           # CLI entry point
 │   ├── analyzer.py      # Core analysis engine
@@ -321,8 +321,8 @@ burnbook/
 
 ```bash
 # Clone and setup
-git clone https://github.com/burnbook/burnbook.git
-cd burnbook
+git clone https://github.com/CybrLint/CybrLint.git
+cd CybrLint
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -e ".[dev]"
@@ -331,11 +331,11 @@ pip install -e ".[dev]"
 pytest
 
 # Run with coverage
-pytest --cov=burnbook --cov-report=html
+pytest --cov=CybrLint --cov-report=html
 
 # Format code
-black burnbook tests
-ruff check burnbook tests --fix
+black CybrLint tests
+ruff check CybrLint tests --fix
 ```
 
 ## Contributing
@@ -350,7 +350,7 @@ We welcome contributions! Areas we need help with:
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## Why "BurnBook"?
+## Why "CybrLint"?
 
 Named after the iconic burn book from *Mean Girls*, because every codebase has secrets, and we're here to expose them.
 
@@ -360,7 +360,7 @@ Named after the iconic burn book from *Mean Girls*, because every codebase has s
 
 > "You can't sit with us."
 >
-> — BurnBook to your code
+> — CybrLint to your code
 
 ## License
 
@@ -375,5 +375,5 @@ MIT License — see [LICENSE](LICENSE)
 ---
 
 <p align="center">
-  <strong>🔥 BurnBook — Your code will never feel safe again. 🔥</strong>
+  <strong>🔥 CybrLint — Your code will never feel safe again. 🔥</strong>
 </p>
